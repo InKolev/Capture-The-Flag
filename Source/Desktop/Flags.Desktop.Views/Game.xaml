@@ -1,0 +1,51 @@
+﻿<Window x:Class="Flags.Desktop.Views.Game"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Flags.Desktop.Views"
+        xmlns:vms="clr-namespace:Flags.Desktop.ViewModels;assembly=Flags.Desktop.ViewModels"
+        mc:Ignorable="d"
+        Title="Game" Height="550" Width="800" MinHeight="550" MinWidth="800" MaxHeight="550" MaxWidth="800">
+    <Grid Margin="0,0,0,10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="130" MinWidth="130" MaxWidth="130"></ColumnDefinition>
+            <ColumnDefinition Width="178*"></ColumnDefinition>
+            <ColumnDefinition Width="250" MinWidth="250" MaxWidth="250"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Grid.Column="0" Grid.RowSpan="1" Grid.ColumnSpan="4" 
+                   TextAlignment="Center" FontSize="30" FontFamily="Segoe UI Light"
+                   Text="{Binding Path=Gameplay.RemainingTime}"/>
+        <Image Grid.RowSpan="5" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="10"
+               Source="{Binding Path=Gameplay.ActualFlag.ImagePath}"></Image>
+        <Button Grid.Column="3" Grid.ColumnSpan="1" Grid.Row="1" Grid.RowSpan="1" Margin="10"
+                Content="{Binding Path=Gameplay.PossibleFlags[0].Name}" Cursor="Hand"
+                Click="AnswerQuestion"></Button>
+        <Button Grid.Column="3" Grid.ColumnSpan="1" Grid.Row="2" Grid.RowSpan="1" Margin="10"
+                Content="{Binding Path=Gameplay.PossibleFlags[1].Name}" Cursor="Hand"
+                Click="AnswerQuestion"></Button>
+        <Button Grid.Column="3" Grid.ColumnSpan="1" Grid.Row="3" Grid.RowSpan="1" Margin="10"
+                Content="{Binding Path=Gameplay.PossibleFlags[2].Name}" Cursor="Hand"
+                Click="AnswerQuestion"></Button>
+        <Button Grid.Column="3" Grid.ColumnSpan="1" Grid.Row="4" Grid.RowSpan="1" Margin="10"
+                Content="{Binding Path=Gameplay.PossibleFlags[3].Name}" Cursor="Hand"
+                Click="AnswerQuestion"></Button>
+        <Button Grid.Column="3" Grid.ColumnSpan="1" Grid.Row="5" Grid.RowSpan="1" Margin="10"
+                Content="{Binding Path=Gameplay.PossibleFlags[4].Name}" Cursor="Hand"
+                Click="AnswerQuestion"></Button>
+        <Button Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="7" Margin="10"
+                Content="Next" Cursor="Hand" Click="NextQuestion"/>
+        <Label Grid.Row="6" Grid.Column="0" Content="{Binding Path=Gameplay.PlayerName}"/>
+        <Label Grid.Row="6" Grid.Column="1" Content="{Binding Path=Gameplay.PlayerScore}"/>
+    </Grid>
+</Window>
