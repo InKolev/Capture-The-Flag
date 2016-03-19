@@ -61,12 +61,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\DelegateCommand.cs" />
     <Compile Include="Contracts\IEngine.cs" />
     <Compile Include="Contracts\IGameplay.cs" />
+    <Compile Include="Contracts\IScoreboard.cs" />
+    <Compile Include="Contracts\IStartScreen.cs" />
     <Compile Include="EngineViewModel.cs" />
     <Compile Include="FlagViewModel.cs" />
     <Compile Include="GameplayViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ScoreboardViewModel.cs" />
+    <Compile Include="ScoreViewModel.cs" />
+    <Compile Include="StartScreenViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

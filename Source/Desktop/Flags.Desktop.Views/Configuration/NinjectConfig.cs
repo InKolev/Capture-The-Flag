@@ -9,9 +9,11 @@
     {
         public override void Load()
         {
-            Bind<IFlagsDbContext>().To<FlagsDbContext>();
+            Bind<IFlagsDbContext>().To<FlagsDbContext>().InSingletonScope();
             Bind<IGameplay>().To<GameplayViewModel>();
-            Bind<IEngine>().To<EngineViewModel>();
+            Bind<IStartScreen>().To<StartScreenViewModel>();
+            Bind<IScoreboard>().To<ScoreboardViewModel>();
+            Bind<IEngine>().To<EngineViewModel>().InSingletonScope();
         }
     }
 }

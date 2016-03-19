@@ -1,13 +1,12 @@
 namespace Flags.Data.Migrations
 {
-    using Models;
-    using System;
-    using System.Data.Entity;
-    using System.Data.Entity.Migrations;
     using System.IO;
     using System.Linq;
+    using System.Data.Entity.Migrations;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<Flags.Data.FlagsDbContext>
+    using Models;
+
+    internal sealed class Configuration : DbMigrationsConfiguration<FlagsDbContext>
     {
         public Configuration()
         {
@@ -18,6 +17,7 @@ namespace Flags.Data.Migrations
         protected override void Seed(FlagsDbContext context)
         {
             this.SeedFlags(context);
+            this.SeedScores(context);
         }
 
         private void SeedFlags(FlagsDbContext context)
@@ -41,6 +41,25 @@ namespace Flags.Data.Migrations
                     };
 
                     context.Flags.AddOrUpdate(flag);
+                }
+
+                context.SaveChanges();
+            }
+        }
+
+        private void SeedScores(FlagsDbContext context)
+        {
+            if (!context.Scores.Any())
+            {
+                for (int i = 1; i <= 20; i++)
+                {
+                    var score = new Score()
+                    {
+                        PlayerName = "Name " + i,
+                        Value = i * 1000
+                    };
+
+                    context.Scores.AddOrUpdate(score);
                 }
 
                 context.SaveChanges();

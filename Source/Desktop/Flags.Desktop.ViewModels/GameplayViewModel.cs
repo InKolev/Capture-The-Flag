@@ -8,6 +8,8 @@
     using Contracts;
     using Data;
     using Infrastructure.Extensions;
+    using System.Collections.ObjectModel;
+    using Infrastructure.Helpers;
 
     public class GameplayViewModel : IGameplay, INotifyPropertyChanged
     {
@@ -18,6 +20,7 @@
         // Fields
         private List<FlagViewModel> possibleFlags;
         private FlagViewModel actualFlag;
+        private string playerName;
         private int playerScore = 0;
         private int remainingTime = 60;
 
@@ -46,7 +49,7 @@
             set
             {
                 this.possibleFlags = value;
-                this.NotifyPropertyChanged(Helpers.GetPropertyName(() => this.PossibleFlags));
+                this.NotifyPropertyChanged(PropertiesHelper.GetPropertyName(() => this.PossibleFlags));
             }
         }
 
@@ -59,13 +62,32 @@
             set
             {
                 this.actualFlag = value;
-                this.NotifyPropertyChanged(Helpers.GetPropertyName(() => this.ActualFlag));
+                this.NotifyPropertyChanged(PropertiesHelper.GetPropertyName(() => this.ActualFlag));
             }
         }
 
-        public string PlayerName { get; set; } = "Martin Lawrence";
+        public string PlayerName
+        {
+            get
+            {
+                return $"Player: {this.playerName}";
+            }
+            set
+            {
+                this.playerName = value;
+                this.NotifyPropertyChanged(PropertiesHelper.GetPropertyName(() => this.PlayerName));
+            }
+        }
 
-        public int PlayerScore
+        public string PlayerScore
+        {
+            get
+            {
+                return $"Score: {this.Score}";
+            }
+        }
+
+        public int Score
         {
             get
             {
@@ -74,7 +96,7 @@
             set
             {
                 this.playerScore = value;
-                this.NotifyPropertyChanged(Helpers.GetPropertyName(() => this.PlayerScore));
+                this.NotifyPropertyChanged(PropertiesHelper.GetPropertyName(() => this.PlayerScore));
             }
         }
 
@@ -83,6 +105,14 @@
             get
             {
                 return $"Time left: 00:00:{this.remainingTime} seconds";
+            }
+        }
+
+        public string RemainingFlags
+        {
+            get
+            {
+                return $"Flags left: {this.Flags.Where(x => !x.IsUsed).Count().ToString()}";
             }
         }
 
@@ -95,7 +125,7 @@
             set
             {
                 this.remainingTime = value;
-                this.NotifyPropertyChanged(Helpers.GetPropertyName(() => this.RemainingTime));
+                this.NotifyPropertyChanged(PropertiesHelper.GetPropertyName(() => this.RemainingTime));
             }
         }
 
@@ -103,24 +133,23 @@
         public void LoadNextQuestion()
         {
             this.ActualFlag = this.Flags.Where(x => !x.IsUsed).FirstOrDefault();
-
-            if(this.ActualFlag == null)
+            if (this.ActualFlag == null)
             {
                 this.RemainingTimeInSeconds = 0;
                 return;
             }
-
             this.ActualFlag.IsUsed = true;
 
             this.PossibleFlags = this.Flags
-                .Where(x=> x.Id != this.ActualFlag.Id)
+                .Where(x => x.Id != this.ActualFlag.Id)
                 .OrderBy(x => Guid.NewGuid())
                 .Take(FakeFlagsPerRound)
                 .ToList();
             this.PossibleFlags.Add(ActualFlag);
             this.PossibleFlags.Shuffle();
 
-            this.NotifyPropertyChanged(Helpers.GetPropertyName(() => this.PossibleFlags));
+            this.NotifyPropertyChanged(PropertiesHelper.GetPropertyName(() => this.PossibleFlags));
+            this.NotifyPropertyChanged(PropertiesHelper.GetPropertyName(() => this.RemainingFlags));
         }
 
         public void LoadFlags()
@@ -138,12 +167,12 @@
 
         public void IncreaseScore()
         {
-            this.PlayerScore += ScorePointsPerAnswer;
+            this.Score += ScorePointsPerAnswer;
         }
 
         public void DecreaseScore()
         {
-            this.PlayerScore -= ScorePointsPerAnswer;
+            this.Score -= ScorePointsPerAnswer;
         }
 
         public void UpdateTime()

@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Flags.Desktop.Views", "Desk
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Flags.Desktop.Infrastructure", "Desktop\Flags.Desktop.Infrastructure\Flags.Desktop.Infrastructure.csproj", "{F2B66906-44ED-476E-8024-83E4C6F0B59A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Flags.Desktop.Common", "Desktop\Flags.Desktop.Common\Flags.Desktop.Common.csproj", "{2A76593D-D114-45A9-9BCB-DA5632075F03}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,6 +51,10 @@ Global
 		{F2B66906-44ED-476E-8024-83E4C6F0B59A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F2B66906-44ED-476E-8024-83E4C6F0B59A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F2B66906-44ED-476E-8024-83E4C6F0B59A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A76593D-D114-45A9-9BCB-DA5632075F03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A76593D-D114-45A9-9BCB-DA5632075F03}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A76593D-D114-45A9-9BCB-DA5632075F03}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A76593D-D114-45A9-9BCB-DA5632075F03}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -60,5 +66,6 @@ Global
 		{8117F6DA-C931-48B6-9E3E-A41931F30160} = {00524024-4F0A-49B9-91FA-CFCE5C9CBC63}
 		{090C1A8B-459F-4DCD-8A66-BA96D7BC098F} = {00524024-4F0A-49B9-91FA-CFCE5C9CBC63}
 		{F2B66906-44ED-476E-8024-83E4C6F0B59A} = {00524024-4F0A-49B9-91FA-CFCE5C9CBC63}
+		{2A76593D-D114-45A9-9BCB-DA5632075F03} = {00524024-4F0A-49B9-91FA-CFCE5C9CBC63}
 	EndGlobalSection
 EndGlobal

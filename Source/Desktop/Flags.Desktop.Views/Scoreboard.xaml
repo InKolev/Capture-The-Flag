@@ -4,11 +4,33 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Flags.Desktop.Views"
+        xmlns:vms="clr-namespace:Flags.Desktop.ViewModels;assembly=Flags.Desktop.ViewModels"
         mc:Ignorable="d"
         Title="Scoreboard" Height="710" Width="860"
         MinHeight="710" MinWidth="860"
         MaxHeight="710" MaxWidth="860">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="100"></RowDefinition>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="Scoreboard" FontSize="60" TextAlignment="Center"/>
+        <ListBox Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" ItemsSource="{Binding Scoreboard.Scores}" HorizontalAlignment="Center">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="{Binding ScoreboardRow}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <Button Grid.Row="2" Grid.Column="0" Content="{Binding Scoreboard.RestartGameButtonContent}" Click="RestartGame"></Button>
+        <Button Grid.Row="2" Grid.Column="1" Content="{Binding Scoreboard.ExitGameButtonContent}" Click="ExitGame"></Button>
     </Grid>
 </Window>

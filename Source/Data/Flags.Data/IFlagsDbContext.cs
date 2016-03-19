@@ -11,5 +11,9 @@
     public interface IFlagsDbContext
     {
         IDbSet<Flag> Flags { get; set; }
+
+        IDbSet<Score> Scores { get; set; }
+
+        void Save();
     }
 }

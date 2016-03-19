@@ -240,6 +240,10 @@
       <Project>{2832148c-3389-4cc9-b182-2742c8e5d8bb}</Project>
       <Name>Flags.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Flags.Desktop.Common\Flags.Desktop.Common.csproj">
+      <Project>{2a76593d-d114-45a9-9bcb-da5632075f03}</Project>
+      <Name>Flags.Desktop.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Flags.Desktop.Infrastructure\Flags.Desktop.Infrastructure.csproj">
       <Project>{f2b66906-44ed-476e-8024-83e4c6f0b59a}</Project>
       <Name>Flags.Desktop.Infrastructure</Name>

@@ -1,9 +1,9 @@
-﻿namespace Flags.Desktop.Infrastructure.Extensions
+﻿namespace Flags.Desktop.Infrastructure.Helpers
 {
     using System;
     using System.Linq.Expressions;
 
-    public class Helpers
+    public class PropertiesHelper
     {
         // Requires object instance, but you can skip specifying T
         public static string GetPropertyName<T>(Expression<Func<T>> exp)

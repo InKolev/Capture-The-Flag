@@ -6,7 +6,10 @@
         xmlns:local="clr-namespace:Flags.Desktop.Views"
         xmlns:vms="clr-namespace:Flags.Desktop.ViewModels;assembly=Flags.Desktop.ViewModels"
         mc:Ignorable="d"
-        Title="Game" Height="550" Width="800" MinHeight="550" MinWidth="800" MaxHeight="550" MaxWidth="800">
+        Title="Game" 
+        Height="550" Width="800" 
+        MinHeight="550" MinWidth="800" 
+        MaxHeight="550" MaxWidth="800">
     <Grid Margin="0,0,0,10">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="130" MinWidth="130" MaxWidth="130"></ColumnDefinition>
@@ -23,9 +26,12 @@
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0" Grid.Column="0" Grid.RowSpan="1" Grid.ColumnSpan="4" 
+        <TextBlock Grid.Row="0" Grid.Column="0" Grid.RowSpan="1" Grid.ColumnSpan="2" 
                    TextAlignment="Center" FontSize="30" FontFamily="Segoe UI Light"
                    Text="{Binding Path=Gameplay.RemainingTime}"/>
+        <TextBlock Grid.Row="0" Grid.Column="3" Grid.RowSpan="1" Grid.ColumnSpan="1" 
+                   TextAlignment="Center" FontSize="30" FontFamily="Segoe UI Light"
+                   Text="{Binding Path=Gameplay.RemainingFlags}"/>
         <Image Grid.RowSpan="5" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="10"
                Source="{Binding Path=Gameplay.ActualFlag.ImagePath}"></Image>
         <Button Grid.Column="3" Grid.ColumnSpan="1" Grid.Row="1" Grid.RowSpan="1" Margin="10"

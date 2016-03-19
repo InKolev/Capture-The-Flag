@@ -4,16 +4,23 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Flags.Desktop.Views"
+        xmlns:ViewModel="clr-namespace:Flags.Desktop.ViewModels;assembly=Flags.Desktop.ViewModels"
         mc:Ignorable="d"
-        Title="StartScreen" Height="240" Width="400">
+        Title="StartScreen" Height="300" Width="500">
+    <Window.DataContext>
+        <ViewModel:StartScreenViewModel/>
+    </Window.DataContext>
+    <Window.InputBindings>
+        <KeyBinding Key="Enter" Command="{Binding StartGameCommand}"/>
+    </Window.InputBindings>
     <Grid>
         <StackPanel>
-            <TextBlock Text="Capture the Flag"  TextAlignment="Center" FontSize="30" FontFamily="Segoe UI Light"/>
-            <Separator  Height="20"/>
-            <TextBlock  Text="Enter your name:" FontSize="20" TextAlignment="Center"/>
-            <TextBox Height="30" Width="200" MinWidth="200" MaxWidth="200" Margin="10" Name="textBoxPlayerName"/>
-            <Button Height="30" Content="Start" FontSize="20" Width="200" MinWidth="200" MaxWidth="200"
-                    Click="StartGame"/>
+            <TextBlock Text="{Binding StartScreen.GameTitle}"  TextAlignment="Center" FontSize="30" FontFamily="Segoe UI Light"/>
+            <Separator Height="30"/>
+            <TextBlock Text="{Binding StartScreen.PlayerNameLabel}" FontSize="20" TextAlignment="Center"/>
+            <TextBox Height="30" Width="200" MinWidth="200" MaxWidth="200" Margin="10" Name="textBoxPlayerName" Text="{Binding StartScreen.PlayerName, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"/>
+            <Label Content="{Binding PlayerNameLengthErrorLabel, UpdateSourceTrigger=PropertyChanged}" FontSize="20" Foreground="Red"></Label>
+            <Button Height="30" Content="{Binding StartScreen.GameStartButton}" FontSize="20" Width="200" MinWidth="200" MaxWidth="200" Click="StartGame"/>
         </StackPanel>
     </Grid>
 </Window>

@@ -3,7 +3,7 @@
     using Data;
     using Data.Models;
     using System.Collections.Generic;
-
+    using System.Collections.ObjectModel;
     public interface IGameplay
     {
         IFlagsDbContext DbContext { get; set; }
@@ -18,7 +18,11 @@
 
         string PlayerName { get; set; }
 
-        int PlayerScore { get; set; }
+        string PlayerScore { get; }
+
+        int Score { get; set; }
+
+        string RemainingFlags { get; }
 
         int RemainingTimeInSeconds { get; set; }
 

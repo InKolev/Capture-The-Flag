@@ -16,5 +16,12 @@
         }
 
         public IDbSet<Flag> Flags { get; set; }
+
+        public IDbSet<Score> Scores { get; set; }
+
+        public void Save()
+        {
+            this.SaveChanges();
+        }
     }
 }
