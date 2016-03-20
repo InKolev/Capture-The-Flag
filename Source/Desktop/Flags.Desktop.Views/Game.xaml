@@ -55,7 +55,8 @@
                 Command="{Binding Path=Gameplay.SelectFlag}"
                 CommandParameter="4"></Button>
         <Button Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="7" Margin="10"
-                Content="Next" Cursor="Hand" Click="NextQuestion"/>
+                Content="Next" Cursor="Hand" 
+                Command="{Binding Path=Gameplay.NextQuestion}"/>
         <Label Grid.Row="6" Grid.Column="0" Content="{Binding Path=Gameplay.PlayerName}"/>
         <Label Grid.Row="6" Grid.Column="1" Content="{Binding Path=Gameplay.PlayerScore}"/>
     </Grid>

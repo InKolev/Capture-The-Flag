@@ -138,6 +138,14 @@
             }
         }
 
+        public ICommand NextQuestion
+        {
+            get
+            {
+                return new RelayCommand(this.LoadNextQuestion);
+            }
+        }
+
         // Methods
         public void LoadNextQuestion()
         {
