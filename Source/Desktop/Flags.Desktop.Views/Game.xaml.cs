@@ -53,8 +53,8 @@
             this.Timer = new DispatcherTimer();
             this.Timer.Tick += OnTimerTick;
             this.Timer.Interval = new TimeSpan(
-                Constants.TimerTickIntervalInHours, 
-                Constants.TimerTickIntervalInMinutes, 
+                Constants.TimerTickIntervalInHours,
+                Constants.TimerTickIntervalInMinutes,
                 Constants.TimerTickIntervalInSeconds);
             this.Timer.Start();
         }
@@ -76,13 +76,14 @@
                 this.Timer.Stop();
 
                 var dialogResult = MessageBox.Show(
-                    "Your time is over, or there are no more flags left. Would you like to Save your result to The Scoreboard?", 
-                    "GAME OVER", 
+                    "Your time is over, or there are no more flags left. Would you like to Save your result to The Scoreboard?",
+                    "GAME OVER",
                     MessageBoxButton.YesNo);
 
                 if (dialogResult == MessageBoxResult.Yes)
                 {
-                    this.AddScoreToScoreboard();
+                    this.Engine.Gameplay.AddScoreToScoreboard();
+                    this.Engine.Scoreboard.UpdateScores();
                 }
 
                 var scoreboard = new Scoreboard();
@@ -90,28 +91,6 @@
 
                 this.Close();
             }
-        }
-
-        private void AddScoreToScoreboard()
-        {
-            var score = this.Engine.Gameplay.DbContext.Scores.SingleOrDefault(x => x.PlayerName == this.Engine.Gameplay.PlayerName);
-
-            if (score == null)
-            {
-                score = new Score()
-                {
-                    PlayerName = this.Engine.Gameplay.PlayerName,
-                    Value = this.Engine.Gameplay.Score
-                };
-            }
-            else
-            {
-                score.Value = this.Engine.Gameplay.Score;
-            }
-
-            this.Engine.Gameplay.DbContext.Scores.AddOrUpdate(score);
-            this.Engine.Gameplay.DbContext.Save();
-            this.Engine.Scoreboard.UpdateScores();
         }
     }
 }

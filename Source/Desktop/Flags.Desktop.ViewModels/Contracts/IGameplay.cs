@@ -35,5 +35,7 @@
         void DecreaseScore();
 
         void UpdateTime();
+
+        void AddScoreToScoreboard();
     }
 }

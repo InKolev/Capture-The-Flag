@@ -12,6 +12,8 @@
     using Infrastructure.Helpers;
     using System.Windows.Input;
     using Commands;
+    using Data.Models;
+    using System.Data.Entity.Migrations;
     public class GameplayViewModel : IGameplay, INotifyPropertyChanged
     {
         // Constants
@@ -218,6 +220,27 @@
             this.LoadNextQuestion();
 
             return true;
+        }
+
+        private void AddScoreToScoreboard()
+        {
+            var score = this.DbContext.Scores.SingleOrDefault(x => x.PlayerName == this.PlayerName);
+
+            if (score == null)
+            {
+                score = new Score()
+                {
+                    PlayerName = this.PlayerName,
+                    Value = this.Score
+                };
+            }
+            else
+            {
+                score.Value = this.Score;
+            }
+
+            this.DbContext.Scores.AddOrUpdate(score);
+            this.DbContext.Save();
         }
 
         public void NotifyPropertyChanged(string propertyName)
