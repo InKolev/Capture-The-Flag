@@ -1,21 +1,11 @@
 ﻿namespace Flags.Desktop.Views
 {
+    using System.Windows;
+
     using Infrastructure.Helpers;
     using Ninject;
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    using System.Windows;
-    using System.Windows.Controls;
-    using System.Windows.Data;
-    using System.Windows.Documents;
-    using System.Windows.Input;
-    using System.Windows.Media;
-    using System.Windows.Media.Imaging;
-    using System.Windows.Shapes;
     using ViewModels.Contracts;
+    using Common.Constants;
 
     /// <summary>
     /// Interaction logic for Scoreboard.xaml
@@ -53,8 +43,8 @@
         private void RestartEngine()
         {
             this.Engine.Gameplay.LoadFlags();
-            this.Engine.Gameplay.Score = 0;
-            this.Engine.Gameplay.RemainingTimeInSeconds = 60;
+            this.Engine.Gameplay.Score = Constants.InitialScore;
+            this.Engine.Gameplay.RemainingTimeInSeconds = Constants.InitialGameTimeInSeconds;
         }
     }
 }

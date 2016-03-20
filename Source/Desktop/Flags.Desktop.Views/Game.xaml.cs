@@ -1,29 +1,12 @@
 ﻿namespace Flags.Desktop.Views
 {
+    using System;
+    using System.Windows;
+    using System.Windows.Threading;
+
     using Common.Constants;
-    using Configuration;
-    using Data.Models;
-    using Flags.Data;
     using Infrastructure.Helpers;
     using Ninject;
-    using System;
-    using System.Collections.Generic;
-    using System.Data.Entity.Migrations;
-    using System.Linq;
-    using System.Reflection;
-    using System.Text;
-    using System.Threading.Tasks;
-    using System.Windows;
-    using System.Windows.Controls;
-    using System.Windows.Data;
-    using System.Windows.Documents;
-    using System.Windows.Input;
-    using System.Windows.Media;
-    using System.Windows.Media.Imaging;
-    using System.Windows.Navigation;
-    using System.Windows.Shapes;
-    using System.Windows.Threading;
-    using ViewModels;
     using ViewModels.Contracts;
 
     /// <summary>
@@ -34,7 +17,6 @@
         public Game()
         {
             this.InitializeComponent();
-            this.InitializeEngine();
             this.InitializeData();
             this.InitializeTimer();
         }
@@ -42,12 +24,7 @@
         private IEngine Engine { get; set; }
 
         private DispatcherTimer Timer { get; set; }
-
-        private void InitializeEngine()
-        {
-            this.Engine = NinjectHelper.Kernel.Get<IEngine>();
-        }
-
+     
         private void InitializeTimer()
         {
             this.Timer = new DispatcherTimer();
@@ -61,6 +38,7 @@
 
         private void InitializeData()
         {
+            this.Engine = NinjectHelper.Kernel.Get<IEngine>();
             this.Engine.Gameplay.PlayerName = this.Engine.StartScreen.PlayerName;
             this.DataContext = this.Engine;
         }
