@@ -7,14 +7,14 @@
     using System.Threading.Tasks;
     using System.Windows.Input;
 
-    public class DelegateCommand : ICommand
+    public class FuncCommand : ICommand
     {
-        public DelegateCommand(Action action)
-        {
-            this.Action = action;
-        }
+        private Func<int, bool> funky;
 
-        private Action Action { get; set; }
+        public FuncCommand(Func<int, bool> funky)
+        {
+            this.funky = funky;
+        }
 
         public event EventHandler CanExecuteChanged;
 
@@ -25,7 +25,8 @@
 
         public void Execute(object parameter)
         {
-            this.Action();
+            var argument = int.Parse(parameter.ToString());
+            this.funky(argument);
         }
     }
 }

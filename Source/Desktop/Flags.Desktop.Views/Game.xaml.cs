@@ -43,33 +43,6 @@
 
         private DispatcherTimer Timer { get; set; }
 
-        private void AnswerQuestion(object sender, RoutedEventArgs e)
-        {
-            if(this.Engine.Gameplay.ActualFlag == null)
-            {
-                return;
-            }
-
-            var senderAsButton = sender as Button;
-            var senderName = senderAsButton.Content.ToString();
-
-            if (this.Engine.Gameplay.ActualFlag.Name == senderName)
-            {
-                this.Engine.Gameplay.IncreaseScore();
-                this.Engine.Gameplay.LoadNextQuestion();
-            }
-            else
-            {
-                this.Engine.Gameplay.DecreaseScore();
-                this.Engine.Gameplay.LoadNextQuestion();
-            }
-        }
-
-        private void NextQuestion(object sender, RoutedEventArgs e)
-        {
-            this.Engine.Gameplay.LoadNextQuestion();
-        }
-
         private void InitializeEngine()
         {
             this.Engine = NinjectHelper.Kernel.Get<IEngine>();

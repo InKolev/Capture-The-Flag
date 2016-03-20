@@ -61,7 +61,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Commands\DelegateCommand.cs" />
+    <Compile Include="Commands\FuncCommand.cs" />
+    <Compile Include="Commands\RelayCommand.cs" />
     <Compile Include="Contracts\IEngine.cs" />
     <Compile Include="Contracts\IGameplay.cs" />
     <Compile Include="Contracts\IScoreboard.cs" />

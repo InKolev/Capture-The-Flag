@@ -10,7 +10,8 @@
     using Infrastructure.Extensions;
     using System.Collections.ObjectModel;
     using Infrastructure.Helpers;
-
+    using System.Windows.Input;
+    using Commands;
     public class GameplayViewModel : IGameplay, INotifyPropertyChanged
     {
         // Constants
@@ -129,6 +130,14 @@
             }
         }
 
+        public ICommand SelectFlag
+        {
+            get
+            {
+                return new FuncCommand(this.AnswerQuestion);
+            }
+        }
+
         // Methods
         public void LoadNextQuestion()
         {
@@ -178,6 +187,29 @@
         public void UpdateTime()
         {
             this.RemainingTimeInSeconds -= 1;
+        }
+
+        public bool AnswerQuestion(int flagIndex)
+        {
+            if (this.ActualFlag == null)
+            {
+                return false;
+            }
+
+            var selectedFlag = this.PossibleFlags[flagIndex];
+
+            if (this.ActualFlag.Name == selectedFlag.Name)
+            {
+                this.Score += ScorePointsPerAnswer;
+            }
+            else
+            {
+                this.Score -= ScorePointsPerAnswer;
+            }
+
+            this.LoadNextQuestion();
+
+            return true;
         }
 
         public void NotifyPropertyChanged(string propertyName)

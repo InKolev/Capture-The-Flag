@@ -17,7 +17,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="100"></RowDefinition>
             <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
             <RowDefinition Height="100"></RowDefinition>
         </Grid.RowDefinitions>
         <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="Scoreboard" FontSize="60" TextAlignment="Center"/>
@@ -30,7 +30,7 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <Button Grid.Row="2" Grid.Column="0" Content="{Binding Scoreboard.RestartGameButtonContent}" Click="RestartGame"></Button>
-        <Button Grid.Row="2" Grid.Column="1" Content="{Binding Scoreboard.ExitGameButtonContent}" Click="ExitGame"></Button>
+        <Button Grid.Row="3" Grid.Column="0" Content="{Binding Scoreboard.RestartGameButtonContent}" Click="RestartGame"></Button>
+        <Button Grid.Row="3" Grid.Column="1" Content="{Binding Scoreboard.ExitGameButtonContent}" Click="ExitGame"></Button>
     </Grid>
 </Window>
