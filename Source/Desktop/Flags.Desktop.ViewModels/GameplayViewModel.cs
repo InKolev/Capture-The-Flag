@@ -222,7 +222,7 @@
             return true;
         }
 
-        private void AddScoreToScoreboard()
+        public void AddScoreToScoreboard()
         {
             var score = this.DbContext.Scores.SingleOrDefault(x => x.PlayerName == this.PlayerName);
 
