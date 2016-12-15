@@ -1,4 +1,7 @@
 ## Flagz ##
+
+Simple university course-work implemented through the use of MVVM architectural pattern, leveraging the data-bindings provided by the WPF platform.
+
 ![enter image description here](http://s18.postimg.org/v11dlwdfd/image.jpg)
 
 
